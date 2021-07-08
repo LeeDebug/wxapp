@@ -8,6 +8,8 @@ Component({
     visitTotal: 0,
   },
   attached() {
+    // let 7moorSDK = requirePlugin('7moorSDK');
+    requirePlugin('7moorSDK')._initAccessId('w6herA97Yg4kYMLF'); // dev1 yexin
     console.log("success")
     let that = this;
     wx.showLoading({

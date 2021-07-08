@@ -45,5 +45,11 @@
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
   },
+  "plugins": {
+    "7moorSDK": {
+      "version": "0.0.3",
+      "provider": "wxad7a35e324644a40"
+    }
+  },
   "sitemapLocation": "sitemap21.json"
 }
