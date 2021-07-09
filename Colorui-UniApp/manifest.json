@@ -1,6 +1,6 @@
 {
     "name" : "ColorUi for UniApp",
-    "appid" : "",
+    "appid" : "__UNI__EB99614",
     "description" : "",
     "versionName" : "ColorUi for UniApp 2.1.4",
     "versionCode" : 214,
@@ -36,7 +36,8 @@
                     "<uses-feature android:name=\"android.hardware.camera\"/>",
                     "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
                     "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
-                ]
+                ],
+                "autoSdkPermissions" : false
             },
             "ios" : {},
             /* ios打包配置 */
