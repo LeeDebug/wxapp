@@ -1,6 +1,6 @@
 Page({
   data: {
-    PageCur: 'basics'
+    PageCur: 'about'
   },
   NavChange(e) {
     this.setData({
