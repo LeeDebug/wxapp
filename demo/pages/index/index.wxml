@@ -2,7 +2,8 @@
 <component wx:if="{{PageCur=='component'}}"></component>
 <plugin wx:if="{{PageCur=='plugin'}}"></plugin>
 <about wx:if="{{PageCur=='about'}}"></about>
-<view class="cu-bar tabbar bg-white shadow foot">
+
+<view wx:if="{{false}}" class="cu-bar tabbar bg-white shadow foot">
   <view class="action" bindtap="NavChange" data-cur="basics">
     <view class='cuIcon-cu-image'>
       <image src="/images/tabbar/basics{{PageCur=='basics'?'_cur':''}}.png"></image>

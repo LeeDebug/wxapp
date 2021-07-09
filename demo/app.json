@@ -38,8 +38,7 @@
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",
-    "navigationBarTitleText": "Color UI",
-    "navigationStyle": "custom",
+    "navigationBarTitleText": "七陌访客端 小程序SDK",
     "navigationBarTextStyle": "white"
   },
   "usingComponents": {

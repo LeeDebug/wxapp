@@ -1,11 +1,11 @@
 <scroll-view scroll-y class="scrollPage">
-  <view class="UCenter-bg">
+  <view class="UCenter-bg" style="height: 400rpx;padding-top: 0;">
     <image src="/images/logo.png" class="png" mode="widthFix"></image>
-    <view class="text-xl">ColorUI组件库
-      <text class="text-df">v2.0</text>
+    <view class="text-xl">七陌访客端 小程序SDK
+      <text class="text-df">v 0.0.4</text>
     </view>
     <view class="margin-top-sm">
-      <text>By:淳淳同学</text>
+      <text>By: 淳淳同学</text>
     </view>
     <image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
@@ -30,10 +30,10 @@
     <view class="cu-item arrow">
       <navigator class="content" url="plugin://7moorSDK/chat" hover-class="none">
         <image src="{{qimoLogo}}" class="png" mode="aspectFit"></image>
-        <text class="text-grey">七陌客服（测试版）</text>
+        <text class="text-grey">7moor客服入口</text>
       </navigator>
     </view>
-    <view class="cu-item arrow">
+    <!-- <view class="cu-item arrow">
       <view class="content" bindtap="CopyLink" data-link="https://github.com/LeeDebug/wxapp">
         <text class="cuIcon-github text-grey"></text>
         <text class="text-grey">GitHub</text>
@@ -68,7 +68,7 @@
         <text class="cuIcon-creativefill text-orange"></text>
         <text class="text-grey">Bug测试</text>
       </navigator>
-    </view>
+    </view> -->
   </view>
   <view class="cu-tabbar-height"></view>
 </scroll-view>
