@@ -1,12 +1,13 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const myPluginInterface = requirePlugin('QIMOSDK');
 
 Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    motto: 'Hi 开发者！',
+    motto: 'Hi，测试人员！',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -18,6 +19,8 @@ Page({
     })
   },
   onLoad: function () {
+    var accessId = 'w6herA97Yg4kYMLF'; // dev1 yexin
+    myPluginInterface._initAccessId(accessId);
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

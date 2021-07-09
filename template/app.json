@@ -12,5 +12,11 @@
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
   },
+  "plugins": {
+    "QIMOSDK": {
+      "version": "dev-dde6bbcf424a35cc2c85cffe9dde1429",
+      "provider": "wxad7a35e324644a40"
+    }
+  },
   "sitemapLocation": "sitemap.json"
 }
