@@ -46,7 +46,7 @@
   },
   "plugins": {
     "7moorSDK": {
-      "version": "0.0.4",
+      "version": "0.0.5",
       "provider": "wxad7a35e324644a40"
     }
   },
