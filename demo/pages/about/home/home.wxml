@@ -1,6 +1,6 @@
 <scroll-view scroll-y class="scrollPage">
   <view class="UCenter-bg" style="height: 400rpx;padding-top: 0;">
-    <image src="/images/logo.png" class="png" mode="widthFix"></image>
+    <image src="{{bannerImage}}" class="png" mode="widthFix"></image>
     <view class="text-xl">七陌访客端 小程序SDK
       <text class="text-df">v 0.0.4</text>
     </view>
@@ -27,7 +27,15 @@
     </view>
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-    <view
+    <!-- <view class="cu-form-group">
+      <view class="title">账户ID</view>
+      <input placeholder="请输入Account" value="{{account}}" bindinput="changeAccount"></input>
+    </view> -->
+    <view class="cu-form-group">
+      <view class="title">渠道ID</view>
+      <input placeholder="请输入AccessId" value="{{accessId}}" bindinput="changeAccessId"></input>
+    </view>
+    <!-- <view
       class="cu-item arrow"
       wx:for="{{agentObj}}"
       wx:for-item="accessid"
@@ -38,7 +46,7 @@
         <image src="{{qimoLogo}}" class="png" mode="aspectFit"></image>
         <text class="text-grey">7moor客服入口（{{agent}}）</text>
       </view>
-    </view>
+    </view> -->
     <!-- <view class="cu-item arrow">
       <view class="content" bindtap="CopyLink" data-link="https://github.com/LeeDebug/wxapp">
         <text class="cuIcon-github text-grey"></text>
@@ -76,5 +84,10 @@
       </navigator>
     </view> -->
   </view>
+
+  <view class="margin-tb-sm flex flex-direction" style="margin-right: 30rpx;margin-left: 30rpx;">
+    <button class="cu-btn bg-red lg" bindtap="gotoQIMOSDK">点击进入客服</button>
+  </view>
+
   <view class="cu-tabbar-height"></view>
 </scroll-view>
