@@ -18,6 +18,16 @@ Component({
   },
   attached() {
     console.log("success")
+    // 初始化用户参数
+    wx.getUserInfo({
+      success: function(res) {
+        QIMOSDK._initUserParams({
+          uid: res.signature,
+          nickName: '淳淳测试访客昵称',
+          avatar: 'https://img2.baidu.com/it/u=2421505363,3507499484&fm=26&fmt=auto&gp=0.jpg',
+        });
+      }
+    });
     let that = this;
     wx.showLoading({
       title: '数据加载中',
