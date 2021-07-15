@@ -6,6 +6,7 @@ Component({
   },
   data: {
     bannerImage: '/images/logo.png',
+    userProfile: null,
     account: '',
     accessId: '',
     starCount: 0,
@@ -26,77 +27,9 @@ Component({
     // 监听 页面跳转 回调事件
     QIMOSDK._onOpenOrderCard((type) => {
       if (type === 'canOpen') {
-        this.goto();
+        that.goto();
       }
     });
-    // console.log("success");
-    // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
-    wx.getSetting({
-      success(set) {
-        console.log("getSetting ==> set.authSetting['scope.userInfo']", set.authSetting['scope.userInfo']);
-        // if (!set.authSetting['scope.userInfo']) {
-        // }
-        wx.authorize({
-          scope: 'scope.userInfo',
-          success (r) {
-            console.log("authorize ==> r", r);
-            // 初始化用户参数
-            wx.getUserInfo({
-              success: function(res) {
-                console.log('miniprogram getUserInfo:\n', res);
-                that.setData({ bannerImage: res.userInfo.avatarUrl });
-                QIMOSDK._initUserParams({
-                  uid: res.signature,
-                  nickName: res.userInfo.nickName || '淳淳测试访客昵称',
-                  avatar: res.userInfo.avatarUrl || 'https://img2.baidu.com/it/u=2421505363,3507499484&fm=26&fmt=auto&gp=0.jpg',
-                });
-              }
-            });
-          },
-          fail (err) {
-            console.log('authorize err:\n', err);
-            // 测试代码
-            wx.getUserInfo({
-              success: function(res) {
-                console.log('miniprogram getUserInfo:\n', res);
-                that.setData({ bannerImage: res.userInfo.avatarUrl });
-                QIMOSDK._initUserParams({
-                  uid: res.signature,
-                  nickName: res.userInfo.nickName || '淳淳测试访客昵称',
-                  avatar: res.userInfo.avatarUrl || 'https://img2.baidu.com/it/u=2421505363,3507499484&fm=26&fmt=auto&gp=0.jpg',
-                });
-              }
-            });
-          },
-        })
-      }
-    })
-    wx.showLoading({
-      title: '数据加载中',
-      mask: true,
-    })
-    let i = 0;
-    numDH();
-    function numDH() {
-      if (i < 20) {
-        setTimeout(function () {
-          that.setData({
-            starCount: i,
-            forksCount: i,
-            visitTotal: i
-          })
-          i++
-          numDH();
-        }, 20)
-      } else {
-        that.setData({
-          starCount: that.coutNum(3000),
-          forksCount: that.coutNum(484),
-          visitTotal: that.coutNum(24000)
-        })
-      }
-    }
-    wx.hideLoading()
   },
   methods: {
     /** 页面跳转函数 */
@@ -119,6 +52,31 @@ Component({
       this.setData({ accessId: e.detail.value });
     },
     gotoQIMOSDK(e) {
+      // 先获取用户授权
+      if (!this.data.userProfile) {
+        // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+        // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+        wx.getUserProfile({
+          desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+          success: (res) => {
+            // console.log('getUserProfile:\n', res);
+            this.setData({
+              userProfile: res,
+              bannerImage: res.userInfo.avatarUrl,
+            });
+            QIMOSDK._initUserParams({
+              uid: res.signature,
+              nickName: res.userInfo.nickName || '淳淳测试访客昵称',
+              avatar: res.userInfo.avatarUrl || 'https://img2.baidu.com/it/u=2421505363,3507499484&fm=26&fmt=auto&gp=0.jpg',
+            });
+          },
+          fail (err) {
+            console.log('getUserProfile err:\n', err);
+          },
+        });
+        return false;
+      }
+      // 判断是否选择或输入了渠道ID
       let value = '';
       let select = this.data.agentObj[this.data.curentAgent];
       if (select) {
@@ -142,54 +100,12 @@ Component({
           return false;
         }
       }
-      // const accessId = e.currentTarget.dataset.accessid;
+      // 初始化 渠道ID
       QIMOSDK._initAccessId(value);
+      // 前往 客服 页面
       wx.navigateTo({
         url: 'plugin://7moorSDK/chat',
       });
-      // wx.showLoading({
-      //   title: '正在加载...',
-      // })
-      // // 延迟 2 秒跳转
-      // setTimeout(function () {
-      //   wx.hideLoading();
-      // }, 500);
-    },
-    coutNum(e) {
-      if (e > 1000 && e < 10000) {
-        e = (e / 1000).toFixed(1) + 'k'
-      }
-      if (e > 10000) {
-        e = (e / 10000).toFixed(1) + 'W'
-      }
-      return e
-    },
-    CopyLink(e) {
-      wx.setClipboardData({
-        data: e.currentTarget.dataset.link,
-        success: res => {
-          wx.showToast({
-            title: '已复制',
-            duration: 1000,
-          })
-        }
-      })
-    },
-    showModal(e) {
-      this.setData({
-        modalName: e.currentTarget.dataset.target
-      })
-    },
-    hideModal(e) {
-      this.setData({
-        modalName: null
-      })
-    },
-    showQrcode() {
-      wx.previewImage({
-        urls: ['https://image.weilanwl.com/color2.0/zanCode.jpg'],
-        current: 'https://image.weilanwl.com/color2.0/zanCode.jpg' // 当前显示图片的http链接      
-      })
     },
   }
 })
