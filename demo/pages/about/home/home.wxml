@@ -33,7 +33,15 @@
     </view> -->
     <view class="cu-form-group">
       <view class="title">渠道ID</view>
-      <input placeholder="请输入AccessId" value="{{accessId}}" bindinput="changeAccessId"></input>
+      <picker bindchange="PickerChange" value="{{curentAgent}}" range="{{agentObj}}">
+        <view class="picker">
+          {{curentAgent ? agentObj[curentAgent] : '请选择（若选择“其他”请手动填写）'}}
+        </view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">渠道ID</view>
+      <input placeholder="请输入其他AccessId" value="{{accessId}}" bindinput="changeAccessId"></input>
     </view>
     <!-- <view
       class="cu-item arrow"

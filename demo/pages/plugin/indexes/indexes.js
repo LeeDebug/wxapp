@@ -1,4 +1,5 @@
 const app = getApp();
+const QIMOSDK = requirePlugin('7moorSDK');
 Page({
   data: {
     StatusBar: app.globalData.StatusBar,
@@ -84,5 +85,31 @@ Page({
         return false
       }
     }
-  }
+  },
+
+  handleSendCard() {
+    // todo 模拟 页面重定向至 插件
+    wx.redirectTo({
+      url: 'plugin://7moorSDK/chat',
+      success: function(res) {
+        const order = {
+          title: '任天堂（Nintendo）Switch游戏机',
+          desc: '任天堂（Nintendo） Switch NS NX掌上游戏机便携 塞尔达马里奥新款游戏机 主机不锁 日版黑机彩色手柄+中文赛/塞尔达传说(指南+地图)',
+          note: '$2330',
+          picture: 'https://img10.360buyimg.com/n5/s75x75_jfs/t4030/290/29851193/293745/d5e2b731/58ac3506Nbb57b5f6.jpg',
+          url: 'https://www.qi.163.com/',
+          isShow: 1,
+          sendByUser: 1,
+          extraParam: {
+            param1: '_$onClickAction事件回调中可能需要的额外参数'
+          },
+        };
+        QIMOSDK._sendOrderCard(order);
+      },
+      fail: function(res) {
+        console.log('======= fail res:\n', res);
+      },
+    });
+  },
+
 });
