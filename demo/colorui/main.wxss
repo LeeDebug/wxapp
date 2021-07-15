@@ -306,7 +306,7 @@ radio.radio[checked]::after {
 	border-color: var(--blue) !important;
 }
 
-switch.red[checked] .wx-switch-input,
+/* switch.red[checked] .wx-switch-input,
 checkbox.red[checked] .wx-checkbox-input,
 radio.red[checked] .wx-radio-input {
 	border-color: var(--red) !important;
@@ -503,7 +503,7 @@ checkbox.white[checked] .wx-checkbox-input,
 radio.white[checked] .wx-radio-input {
 	background-color: var(--white) !important;
 	color: var(--black) !important;
-}
+} */
 
 /* ==================
           边框
