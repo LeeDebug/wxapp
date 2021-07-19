@@ -87,24 +87,46 @@ Page({
     }
   },
 
-  handleSendCard() {
+  handleSendCard(e) {
+    const type = e.currentTarget.dataset.type;
     // todo 模拟 页面重定向至 插件
     wx.redirectTo({
       url: 'plugin://7moorSDK/chat',
       success: function(res) {
-        const order = {
-          title: '任天堂（Nintendo）Switch游戏机',
-          desc: '任天堂（Nintendo） Switch NS NX掌上游戏机便携 塞尔达马里奥新款游戏机 主机不锁 日版黑机彩色手柄+中文赛/塞尔达传说(指南+地图)',
-          note: '$2330',
-          picture: 'https://img10.360buyimg.com/n5/s75x75_jfs/t4030/290/29851193/293745/d5e2b731/58ac3506Nbb57b5f6.jpg',
-          url: 'https://www.qi.163.com/',
-          isShow: 1,
-          sendByUser: 1,
-          extraParam: {
-            param1: '_$onClickAction事件回调中可能需要的额外参数'
-          },
-        };
-        QIMOSDK._sendOrderCard(order);
+        let msg = null;
+        if (type === 'A') {
+          msg = '20210719113430';
+        } else {
+          msg = {
+            orderList: [ // 订单列表
+              {
+                clickTarget: 'uesr', // 订单点击事件
+                clickUrl: 'TARGETTYPE_USER',
+                content: '这是商品描述或者为订单描述文字说明说明说明', // 商品备注
+                imgUrl: 'https://dpic.tiankong.com/1n/e2/QJ6231550446.jpg@!350h', // 商品图片
+                price: '￥9999' // 价格
+              },
+              {
+                clickTarget: 'uesr', // 订单点击事件
+                clickUrl: 'TARGETTYPE_USER',
+                content: '这是商品描述或者为订单描述文字说明说明说明', // 商品备注
+                imgUrl: 'https://dpic.tiankong.com/1n/e2/QJ6231550446.jpg@!350h', // 商品图片
+                price: '￥9999' // 价格
+              },
+              {
+                clickTarget: 'uesr', // 订单点击事件
+                clickUrl: 'TARGETTYPE_USER',
+                content: '这是商品描述或者为订单描述文字说明说明说明', // 商品备注
+                imgUrl: 'https://dpic.tiankong.com/1n/e2/QJ6231550446.jpg@!350h', // 商品图片
+                price: '￥9999' // 价格
+              }
+            ],
+            orderNum: '0123456789012345', // 订单编号
+            orderNumName: '订单号:', // 订单单号的标题
+            orderTitle: '商品订单' // 订单标题
+          }
+        }
+        QIMOSDK._sendOrderNumberOrCard(msg);
       },
       fail: function(res) {
         console.log('======= fail res:\n', res);

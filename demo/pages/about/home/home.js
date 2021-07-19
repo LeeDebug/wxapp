@@ -106,6 +106,12 @@ Component({
       }
       // 初始化 渠道ID
       QIMOSDK._initAccessId(value);
+      // 戴森 七鱼
+      // "version": "1.2.3",
+      // "provider": "wxae5e29812005203f"
+      // 初始化配置信息
+      // QIMOSDK.__configAppId('BvsC24eUXzT');
+      // QIMOSDK._$configAppKey('37158cd867677d2d74775f408a5de331');
       // 前往 客服 页面
       wx.navigateTo({
         url: 'plugin://7moorSDK/chat',
