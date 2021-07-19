@@ -59,25 +59,36 @@ Component({
       if (!this.data.userProfile) {
         // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
         // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-        wx.getUserProfile({
-          desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-          success: (res) => {
-            // console.log('getUserProfile:\n', res);
-            this.setData({
-              userProfile: res,
-              bannerImage: res.userInfo.avatarUrl,
-            });
-            QIMOSDK._initUserParams({
-              uid: res.signature,
-              nickName: res.userInfo.nickName || '淳淳测试访客昵称',
-              avatar: res.userInfo.avatarUrl || 'https://img2.baidu.com/it/u=2421505363,3507499484&fm=26&fmt=auto&gp=0.jpg',
-                __ApiRootUrl: 'https://dev1-v7-webchat.7moor.com',
-            });
-          },
-          fail (err) {
-            console.log('getUserProfile err:\n', err);
-          },
-        });
+        try {
+          console.log('企业微信中的 wx 实例:\n', wx);
+          wx.getUserProfile({
+            desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+            success: (res) => {
+              // console.log('getUserProfile:\n', res);
+              this.setData({
+                userProfile: res,
+                bannerImage: res.userInfo.avatarUrl,
+              });
+              QIMOSDK._initUserParams({
+                uid: res.signature,
+                nickName: res.userInfo.nickName || '淳淳测试访客昵称',
+                avatar: res.userInfo.avatarUrl || 'https://img2.baidu.com/it/u=2421505363,3507499484&fm=26&fmt=auto&gp=0.jpg',
+                  __ApiRootUrl: 'https://dev1-v7-webchat.7moor.com',
+              });
+            },
+            fail (err) {
+              console.log('getUserProfile err:\n', err);
+            },
+          });
+        } catch (error) {
+          console.error('wx.getUserProfile 报错:\n', error);
+          this.setData({
+            userProfile: { error },
+          });
+          QIMOSDK._initUserParams({
+              __ApiRootUrl: 'https://dev1-v7-webchat.7moor.com',
+          });
+        }
         return false;
       }
       // 判断是否选择或输入了渠道ID
