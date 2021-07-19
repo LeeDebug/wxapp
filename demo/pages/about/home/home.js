@@ -24,16 +24,19 @@ Component({
   },
   attached() {
     let that = this;
-    // 监听 页面跳转 回调事件
-    QIMOSDK._onOpenOrderCard((type) => {
-      if (type === 'canOpen') {
-        that.goto();
+    // 初始化 更多按钮的加号 展示类型
+    QIMOSDK._initMoreBtnsShowType('onlyAgent');
+    // 监听 自定义事件 回调函数
+    QIMOSDK._onCustomEventCallBack((eventType, params) => {
+      // 打开 订单列表 的事件
+      if (eventType === '_onOpenOrderCard') {
+        this.openCardListPage();
       }
     });
   },
   methods: {
     /** 页面跳转函数 */
-    goto() {
+    openCardListPage() {
       // todo 模拟跳转至 商品卡片列表 页面
       wx.navigateTo({
         url: '/pages/plugin/indexes/indexes',
@@ -68,6 +71,7 @@ Component({
               uid: res.signature,
               nickName: res.userInfo.nickName || '淳淳测试访客昵称',
               avatar: res.userInfo.avatarUrl || 'https://img2.baidu.com/it/u=2421505363,3507499484&fm=26&fmt=auto&gp=0.jpg',
+                __ApiRootUrl: 'https://dev1-v7-webchat.7moor.com',
             });
           },
           fail (err) {
