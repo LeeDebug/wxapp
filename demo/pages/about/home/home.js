@@ -1,4 +1,4 @@
-const QIMOSDK = requirePlugin('7moorSDK');
+const QIMOSDK = requirePlugin('QIMOSDK');
 
 Component({
   options: {
@@ -125,7 +125,7 @@ Component({
       // QIMOSDK._$configAppKey('37158cd867677d2d74775f408a5de331');
       // 前往 客服 页面
       wx.navigateTo({
-        url: 'plugin://7moorSDK/chat',
+        url: 'plugin://QIMOSDK/chat',
       });
     },
   }

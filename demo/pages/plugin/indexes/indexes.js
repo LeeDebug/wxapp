@@ -1,5 +1,5 @@
 const app = getApp();
-const QIMOSDK = requirePlugin('7moorSDK');
+const QIMOSDK = requirePlugin('QIMOSDK');
 Page({
   data: {
     StatusBar: app.globalData.StatusBar,
@@ -91,7 +91,7 @@ Page({
     const type = e.currentTarget.dataset.type;
     // todo 模拟 页面重定向至 插件
     wx.redirectTo({
-      url: 'plugin://7moorSDK/chat',
+      url: 'plugin://QIMOSDK/chat',
       success: function(res) {
         let msg = null;
         if (type === 'A') {

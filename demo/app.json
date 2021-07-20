@@ -45,7 +45,7 @@
     "cu-custom": "/colorui/components/cu-custom"
   },
   "plugins": {
-    "7moorSDK": {
+    "QIMOSDK": {
       "version": "0.0.8",
       "provider": "wxad7a35e324644a40"
     }
