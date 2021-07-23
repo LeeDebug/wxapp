@@ -96,6 +96,7 @@ Page({
         let msg = null;
         if (type === 'A') {
           msg = '20210719113430';
+          QIMOSDK._sendTextMessage(msg);
         } else {
           msg = {
             orderList: [ // 订单列表
@@ -125,8 +126,8 @@ Page({
             orderNumName: '订单号:', // 订单单号的标题
             orderTitle: '商品订单' // 订单标题
           }
+          QIMOSDK._sendOrderCardMessage(msg);
         }
-        QIMOSDK._sendOrderNumberOrCard(msg);
       },
       fail: function(res) {
         console.log('======= fail res:\n', res);

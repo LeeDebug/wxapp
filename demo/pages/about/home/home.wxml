@@ -1,14 +1,17 @@
 <scroll-view scroll-y class="scrollPage">
+  <!-- 顶部的图标和名称 -->
   <view class="UCenter-bg" style="height: 400rpx;padding-top: 0;">
     <image src="{{bannerImage}}" class="png" mode="widthFix"></image>
     <view class="text-xl">七陌访客端 小程序SDK
-      <text class="text-df">v 0.0.4</text>
+      <text class="text-df">v 0.0.8</text>
     </view>
     <view class="margin-top-sm">
       <text>By: 淳淳同学</text>
     </view>
     <image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
+
+  <!-- 中间的三个卡片 -->
   <view class="padding flex text-center text-grey bg-white shadow-warp">
     <view class="flex flex-sub flex-direction solid-right">
       <view class="text-xxl text-orange">{{visitTotal}}</view>
@@ -26,6 +29,8 @@
         <text class="cuIcon-fork"></text> Fork</view>
     </view>
   </view>
+
+  <!-- 选择或填写 渠道ID -->
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <!-- <view class="cu-form-group">
       <view class="title">账户ID</view>
@@ -43,58 +48,39 @@
       <view class="title">渠道ID</view>
       <input placeholder="请输入其他AccessId" value="{{accessId}}" bindinput="changeAccessId"></input>
     </view>
-    <!-- <view
-      class="cu-item arrow"
-      wx:for="{{agentObj}}"
-      wx:for-item="accessid"
-      wx:for-index="agent"
-      wx:key="agent"
-    >
-      <view class="content" bindtap="gotoQIMOSDK" data-accessid="{{accessid}}" hover-class="none">
-        <image src="{{qimoLogo}}" class="png" mode="aspectFit"></image>
-        <text class="text-grey">7moor客服入口（{{agent}}）</text>
-      </view>
-    </view> -->
-    <!-- <view class="cu-item arrow">
-      <view class="content" bindtap="CopyLink" data-link="https://github.com/LeeDebug/wxapp">
-        <text class="cuIcon-github text-grey"></text>
-        <text class="text-grey">GitHub</text>
-      </view>
-    </view>
-    <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/about/about" hover-class="none">
-        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
-        <text class="text-grey">关于ColorUI组件库</text>
-      </navigator>
-    </view>
-    <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/log/log" hover-class="none">
-        <text class="cuIcon-formfill text-green"></text>
-        <text class="text-grey">日志</text>
-      </navigator>
-    </view>
-    <view class="cu-item arrow">
-      <view class="content" bindtap="showQrcode">
-        <text class="cuIcon-appreciatefill text-red"></text>
-        <text class="text-grey">赞赏支持</text>
-      </view>
-    </view>
-    <view class="cu-item arrow">
-      <button class="cu-btn content" open-type="feedback">
-        <text class="cuIcon-writefill text-cyan"></text>
-        <text class="text-grey">意见反馈</text>
-      </button>
-    </view>
-    <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/test/list" hover-class="none">
-        <text class="cuIcon-creativefill text-orange"></text>
-        <text class="text-grey">Bug测试</text>
-      </navigator>
-    </view> -->
   </view>
 
+  <!-- 进入客服按钮 -->
   <view class="margin-tb-sm flex flex-direction" style="margin-right: 30rpx;margin-left: 30rpx;">
     <button class="cu-btn bg-red lg" bindtap="gotoQIMOSDK">点击进入客服</button>
+  </view>
+
+  <!-- 客户自定义参数 -->
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-form-group">
+      <view class="title">"加号"按钮展示方式</view>
+      <picker bindchange="plusImgChange" value="{{curentPlusImageShowType}}" range="{{plusImgShowTypesList}}">
+        <view class="picker">
+          {{curentPlusImageShowType ? plusImgShowTypesList[curentPlusImageShowType] : '请选择"加号"按钮展示形式'}}
+        </view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">以下为自定义参数：</view>
+    </view>
+    <view
+      class="cu-form-group"
+      wx:for="{{userParamsList}}"
+      wx:for-item="obj"
+      wx:for-index="idx"
+      wx:key="idx"
+    >
+      <view class="title">{{obj.title}}</view>
+      <input placeholder="请输入参数" value="{{obj.value}}" data-title="{{obj.title}}" bindinput="changeParamsValue"></input>
+    </view>
+    <view class="cu-form-group">
+      <button class="cu-btn bg-red lg" style="margin: 0 auto;" bindtap="addUserParam">＋ 添加自定义参数</button>
+    </view>
   </view>
 
   <view class="cu-tabbar-height"></view>
