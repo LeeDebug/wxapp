@@ -37,9 +37,9 @@
     "pages/plugin/verticalnav/verticalnav"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#39b54a",
+    "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "七陌访客端 小程序SDK",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
