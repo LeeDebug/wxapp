@@ -99,32 +99,20 @@ Page({
           QIMOSDK._sendTextMessage(msg);
         } else {
           msg = {
-            orderList: [ // 订单列表
+            orderNum: '0123456789012345', // 单号
+            orderNumName: '单号:', // 单号的标题
+            orderList: [ // 列表
               {
-                clickTarget: 'uesr', // 订单点击事件
-                clickUrl: 'TARGETTYPE_USER',
-                content: '这是商品描述或者为订单描述文字说明说明说明', // 商品备注
-                imgUrl: 'https://dpic.tiankong.com/1n/e2/QJ6231550446.jpg@!350h', // 商品图片
+                imgUrl: 'https://dpic.tiankong.com/1n/e2/QJ6231550446.jpg@!350h', // 图片
+                content: '这是商品描述或者为订单描述文字说明说明说明', // 备注
                 price: '￥9999' // 价格
               },
               {
-                clickTarget: 'uesr', // 订单点击事件
-                clickUrl: 'TARGETTYPE_USER',
-                content: '这是商品描述或者为订单描述文字说明说明说明', // 商品备注
-                imgUrl: 'https://dpic.tiankong.com/1n/e2/QJ6231550446.jpg@!350h', // 商品图片
+                imgUrl: 'https://dpic.tiankong.com/1n/e2/QJ6231550446.jpg@!350h', // 图片
+                content: '这是商品描述或者为订单描述文字说明说明说明', // 备注
                 price: '￥9999' // 价格
               },
-              {
-                clickTarget: 'uesr', // 订单点击事件
-                clickUrl: 'TARGETTYPE_USER',
-                content: '这是商品描述或者为订单描述文字说明说明说明', // 商品备注
-                imgUrl: 'https://dpic.tiankong.com/1n/e2/QJ6231550446.jpg@!350h', // 商品图片
-                price: '￥9999' // 价格
-              }
             ],
-            orderNum: '0123456789012345', // 订单编号
-            orderNumName: '订单号:', // 订单单号的标题
-            orderTitle: '商品订单' // 订单标题
           }
           QIMOSDK._sendOrderCardMessage(msg);
         }
