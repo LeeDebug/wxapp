@@ -16,6 +16,7 @@ Component({
     agentObj: [
       '王锦丨eo8xZ1F1sSkXPkvv',
       '娇慧丨9VILa6qKIdrV5cAV',
+      '王锦安卓丨gNQwsrBaWqgB9G52',
       '淳淳丨MVNiMWnIomIWw6o8',
       '张宇丨6KUShvMAreDBvG75',
       // '婧姐丨p4h6DEi4qyopWkcP',
@@ -39,10 +40,16 @@ Component({
   attached() {
     let that = this;
     // 监听 自定义事件 回调函数
-    QIMOSDK._onCustomEventCallBack((eventType, params) => {
+    QIMOSDK._onCustomEventCallBack((params, navigateBack) => {
       // 打开 订单列表 的事件
-      if (eventType === '_onOpenOrderCard') {
-        this.openCardListPage();
+      if (params._eventType === '_onOpenOrderCard') {
+        // 如果想跳转到客户自身小程序的页面，需要先调用第三个参数的 navigateBack() 方法，再进行后面的跳转逻辑；
+        // 并且，调用完后，如果跳转报错：navigateTo:fail rejected due to no permission currently
+        // 需要将后续的逻辑放到任务队列中，比如：setTimeout(() => { todo sth ... }, 500);
+        navigateBack();
+        setTimeout(() => {
+          this.openCardListPage();
+        }, 500);
       }
     });
     const local = wx.getStorageSync(`wx_userProfile`);
