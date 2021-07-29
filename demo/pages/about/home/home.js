@@ -14,14 +14,11 @@ Component({
     visitTotal: 996,
     curentAgent: '',
     agentObj: [
-      '王锦丨eo8xZ1F1sSkXPkvv',
-      '娇慧丨9VILa6qKIdrV5cAV',
-      '王锦安卓丨gNQwsrBaWqgB9G52',
-      '淳淳丨MVNiMWnIomIWw6o8',
-      '张宇丨6KUShvMAreDBvG75',
-      // '婧姐丨p4h6DEi4qyopWkcP',
-      // '宋鹏丨1NiyDvoOiGzlGqQ8',
-      // '晓琪丨nuZ95M0aefuDfoGk',
+      '王锦丨kVKqWOK0KRPTjhjp',
+      '娇慧丨5VqrzSEyLkwGvvE2',
+      '淳淳丨uoLJYUtpEJA9HNmJ',
+      '王锦安卓丨rwB6TYC1hUDshtcd',
+      '宋鹏丨5ICmhGOOLte7wQvI',
       '其他丨请在下方输入框手动填写',
     ],
     plusImgShowTypesList: [
@@ -99,7 +96,10 @@ Component({
             userProfile: { error },
           });
           QIMOSDK._initUserParams({
-            __ApiRootUrl: 'https://test2-v7-webchat.7moor.com',
+            // __ApiRootUrl: 'https://test2-v7-webchat.7moor.com',
+          });
+          QIMOSDK._initOtherParams({
+            test233: 'test666',
           });
         }
         return false;
@@ -110,7 +110,7 @@ Component({
     },
     initQIMOUserParams() {
       const obj = {
-        __ApiRootUrl: 'https://test2-v7-webchat.7moor.com',
+        // __ApiRootUrl: 'https://test2-v7-webchat.7moor.com',
       };
       this.data.userParamsList.forEach(v => {
         obj[v.title] = v.value;

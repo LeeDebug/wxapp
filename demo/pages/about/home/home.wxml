@@ -3,7 +3,7 @@
   <view class="UCenter-bg" style="height: 400rpx;padding-top: 0;">
     <image src="{{bannerImage}}" class="png" mode="widthFix"></image>
     <view class="text-xl">七陌访客端 小程序SDK
-      <text class="text-df">v 0.0.8</text>
+      <text class="text-df">v 0.0.9</text>
     </view>
     <view class="margin-top-sm">
       <text>By: 淳淳同学</text>
