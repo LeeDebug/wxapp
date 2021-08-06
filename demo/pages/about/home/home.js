@@ -14,11 +14,19 @@ Component({
     visitTotal: 996,
     curentAgent: '',
     agentObj: [
-      '王锦丨kVKqWOK0KRPTjhjp',
-      '娇慧丨5VqrzSEyLkwGvvE2',
-      '淳淳丨uoLJYUtpEJA9HNmJ',
-      '王锦安卓丨rwB6TYC1hUDshtcd',
-      '宋鹏丨5ICmhGOOLte7wQvI',
+      // test2 测试环境
+      'test2 testsdk 王锦丨eo8xZ1F1sSkXPkvv',
+      'test2 testsdk 淳淳丨MVNiMWnIomIWw6o8',
+      'test2 娇慧丨9VILa6qKIdrV5cAV',
+      'test2 5821@7mqd3 淳淳 旧版流程丨4g57CdDYjDfeFxrC',
+      'v7 正式环境 5821@dxtest21 淳淳丨uoLJYUtpEJA9HNmJ',
+      // v7 正式环境
+      'v7 正式环境 王锦丨kVKqWOK0KRPTjhjp',
+      'v7 正式环境 娇慧丨5VqrzSEyLkwGvvE2',
+      'v7 正式环境 淳淳丨uoLJYUtpEJA9HNmJ',
+      'v7 正式环境 王锦安卓丨rwB6TYC1hUDshtcd',
+      'v7 正式环境 宋鹏丨5ICmhGOOLte7wQvI',
+      // 其他
       '其他丨请在下方输入框手动填写',
     ],
     plusImgShowTypesList: [
@@ -31,6 +39,7 @@ Component({
       { title: 'uid', value: '', },
       { title: 'nickName', value: '', },
       { title: 'avatar', value: '', },
+      { title: '__ApiRootUrl', value: 'https://test2-v7-webchat.7moor.com', },
     ],
     qimoLogo: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAnCAYAAABnlOo2AAADcklEQVRYhe2YbWjPURTHP5tZ2vLC1F7sladSkhdLibC9wMhDachDrITyzJb4K6OtWB6WzfjLUB6avECJrVjsIQk1tLzxlq228kKYx6Ez51/Xv/u7v4e/KeVb/+7/f8859/+995577jk3LbehnBSQA6wFCoA+oA24ALyPOmR6RLss4CDwBjgCLACWAXXAO2Bf1LGjGJUCH4CYQ6cC6AfWDyYhWYH7wLEQNmeA68DsP0loMnAOuAoUhiCTwGLgDnASmJgKIXHYw8ATdVwvVAP5wBSg1qG3CehU38sKQygN2KMOu8vxB1eAmUAZ8BR4DGwH5gA3HHYx9cFSm3BIdnGB+XsN8AyY5RhQUAJIvOgCioBVwAyVtej2dgMLHWMUqQt8BF4kOs0VqtEY4kJMbS4CW4BvQBNwAKgEWoHvOrF6mbAS90Khkj+avELSsdNhKLFmEXBX2+PANoe+OPJ4oAe4BJzV/qke+tN0oi0SqfN06W2QgeJAh56QjeqcYVCtny7dVhljhYd9lrAq9hAu18DWoSejMwIZ1Hlfa/RuB1Y6AmZRBpBnESwBrun3UzorLzSqbqY693QPPYneucBWXfk0DZwmxnjFoZfa7vYhswGYD5wHTuuWlDn05SCs0+/dFnmmKzCKrMpDVq4nqN4iE3/JBg552LomSIZDNsqjX7bkgWtQTUX2qt6tJFm+ErbCtUI2o9oAZEzcNnzRxMgohGzoC6kv+BxGOWqCNmj4T8gP/xShH5a+cYPIZQAuQq8sfXKlVPnEr0Ej9FYT9GTIdfJVr4G/RihT27jD9oRPDhWZ0FdL/1Jtm31SDue9FJXQI0u/bEuD3t5xdeYai15zCv/d70WoycNAsro2LQw/ATu04Ev4VdxnS/3QYZG3pmtSvtphbGZ89zTDHGbUWX7IscglpPQC+40+ydMfJpz6siZayamCCbNeD3phyiTmWvp7tK3QrGJ44oCYp6xR6yhXxkfAej3xDlBhkUk68sX43Wc+39iOvV/Gh1GvyzKPNfqDvAM4/c7vwSpo6SOzHqo1mwsxvNPiASSX0sno1a2U2n2E4y6boIWhF+QdYLOGEieC3vY3gXlawoRFidZi7UHswqYfdbo1lQF0zXeAwIiSD8kDgzjeaH69HyVDTpbEHvEVWwrjRKqvsAJ5fJqkAfZ52KT+NwA/ATQwsre1hd8JAAAAAElFTkSuQmCC'
   },
@@ -95,9 +104,6 @@ Component({
           this.setData({
             userProfile: { error },
           });
-          QIMOSDK._initUserParams({
-            // __ApiRootUrl: 'https://test2-v7-webchat.7moor.com',
-          });
           QIMOSDK._initOtherParams({
             test233: 'test666',
           });
@@ -109,9 +115,7 @@ Component({
       }
     },
     initQIMOUserParams() {
-      const obj = {
-        // __ApiRootUrl: 'https://test2-v7-webchat.7moor.com',
-      };
+      const obj = {};
       this.data.userParamsList.forEach(v => {
         obj[v.title] = v.value;
       });
