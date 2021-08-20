@@ -22,8 +22,8 @@
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
+    "useMultiFrameRuntime": false,
+    "useApiHook": false,
     "useApiHostProcess": false,
     "babelSetting": {
       "ignore": [],
@@ -31,7 +31,7 @@
       "outputPath": ""
     },
     "enableEngineNative": false,
-    "useIsolateContext": false,
+    "useIsolateContext": true,
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
